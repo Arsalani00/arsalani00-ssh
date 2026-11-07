@@ -16,3 +16,9 @@ def create_file(file_name):
     data = {"categories": ["Food", "Transportation", "Other"], "expenses": []}
     save_file(file_name, data)
     print("Expense file created.")
+
+
+def load_file(file_name):
+    with open(file_name, "r", encoding="utf-8") as file:
+        data = json.loads(file.read())
+    return data
