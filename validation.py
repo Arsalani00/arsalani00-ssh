@@ -26,3 +26,9 @@ def check_amount(value):
     if amount != float(formatted_amount):
         raise Exception("Use at most two decimal places.")
     return amount
+
+
+def check_text(value):
+    if value == "" or value.split() == []:
+        raise Exception("Enter text instead of leaving this field blank.")
+    return value
