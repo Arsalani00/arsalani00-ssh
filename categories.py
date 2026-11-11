@@ -18,3 +18,18 @@ def add_category(file_name):
     data["categories"].append(name)
     save_file(file_name, data)
     print("Category added.")
+
+
+def rename_category(file_name):
+    data = show_categories(file_name)
+    name = check_text(input("Enter category name to rename: "))
+    position = data["categories"].index(name)
+    new_name = check_text(input("Enter new category name: "))
+    if new_name in data["categories"]:
+        raise Exception("That category already exists.")
+    data["categories"][position] = new_name
+    for expense in data["expenses"]:
+        if expense["category"] == name:
+            expense["category"] = new_name
+    save_file(file_name, data)
+    print("Category renamed.")
