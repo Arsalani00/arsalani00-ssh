@@ -32,9 +32,17 @@ def show_expenses(expenses):
         print()
 
 
-def filter_expenses(expenses, category):
+def filter_expenses(expenses, category, start_date="", end_date=""):
+    if start_date != "":
+        start_date = check_date(start_date)
+    if end_date != "":
+        end_date = check_date(end_date)
     filtered = []
     for expense in expenses:
-        if category == "" or expense["category"] == category:
+        date = check_date(expense["date"])
+        category_matches = category == "" or expense["category"] == category
+        after_start = start_date == "" or date >= start_date
+        before_end = end_date == "" or date <= end_date
+        if category_matches and after_start and before_end:
             filtered.append(expense)
     return filtered
