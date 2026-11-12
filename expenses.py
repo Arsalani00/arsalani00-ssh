@@ -30,3 +30,11 @@ def show_expenses(expenses):
         print("Description:", expense["description"])
         print(f"Amount: {expense['amount']:.2f}")
         print()
+
+
+def filter_expenses(expenses, category):
+    filtered = []
+    for expense in expenses:
+        if category == "" or expense["category"] == category:
+            filtered.append(expense)
+    return filtered
