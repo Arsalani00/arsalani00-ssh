@@ -21,3 +21,12 @@ def add_expense(file_name):
     data["expenses"].append(expense)
     save_file(file_name, data)
     print("Expense added.")
+
+
+def show_expenses(expenses):
+    for expense in expenses:
+        print("Date:", expense["date"])
+        print("Category:", expense["category"])
+        print("Description:", expense["description"])
+        print(f"Amount: {expense['amount']:.2f}")
+        print()
