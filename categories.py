@@ -33,3 +33,14 @@ def rename_category(file_name):
             expense["category"] = new_name
     save_file(file_name, data)
     print("Category renamed.")
+
+
+def remove_category(file_name):
+    data = show_categories(file_name)
+    name = check_text(input("Enter category name to remove: "))
+    for expense in data["expenses"]:
+        if expense["category"] == name:
+            raise Exception("That category is used by an expense. Rename it instead.")
+    data["categories"].remove(name)
+    save_file(file_name, data)
+    print("Category removed.")
