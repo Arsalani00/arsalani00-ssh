@@ -1,5 +1,5 @@
-from files import create_file
-from expenses import add_expense
+from files import create_file, load_file
+from expenses import add_expense, show_expenses, filter_expenses
 
 
 def main():
@@ -15,6 +15,14 @@ def main():
         if choice == "1":
             file_name = input("Enter expense file name: ")
             create_file(file_name)
+        elif choice == "2":
+            file_name = input("Enter expense file name: ")
+            data = load_file(file_name)
+            category = input("Category (blank for all): ")
+            start_date = input("Start date MM-DD-YYYY (blank for no limit): ")
+            end_date = input("End date MM-DD-YYYY (blank for no limit): ")
+            filtered = filter_expenses(data["expenses"], category, start_date, end_date)
+            show_expenses(filtered)
         elif choice == "5":
             file_name = input("Enter expense file name: ")
             add_expense(file_name)
