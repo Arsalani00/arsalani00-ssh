@@ -1,5 +1,6 @@
 from files import create_file, load_file
 from expenses import add_expense, show_expenses, filter_expenses
+from export import export_csv
 
 
 def main():
@@ -23,6 +24,10 @@ def main():
             end_date = input("End date MM-DD-YYYY (blank for no limit): ")
             filtered = filter_expenses(data["expenses"], category, start_date, end_date)
             show_expenses(filtered)
+        elif choice == "3":
+            file_name = input("Enter expense file name: ")
+            csv_name = input("Enter CSV file name (example: expenses.csv): ")
+            export_csv(file_name, csv_name)
         elif choice == "5":
             file_name = input("Enter expense file name: ")
             add_expense(file_name)
